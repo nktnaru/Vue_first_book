@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter3</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      .red {
+        color: white;
+        background: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Vue.js</h1>
+    <div id="app">
+      <hello />
+    </div>
+
+    <!-- v-onとmethods -->
+    <script>
+      var hello = Vue.component("hello", {
+        data: function() {
+          return {
+            counter: 0,
+            isred: false
+          };
+        },
+        methods: {
+          doAction: function(event) {
+            this.counter++;
+            if (this.counter > 10) {
+              this.counter = 0;
+            }
+            if (this.counter % 2 == 0) {
+              this.isRed = false;
+            } else {
+              this.isRed = true;
+            }
+          }
+        },
+        template:
+          '<p :class="{red:isRed}" @click="doAction" class="hello">clicked:{{counter}}.</p>'
+      });
+
+      var app = new Vue({
+        el: "#app"
+      });
+    </script>
+  </body>
+</html>
