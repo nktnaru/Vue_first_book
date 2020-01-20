@@ -1,0 +1,52 @@
+<!-- v-forリストレンダリング -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEST</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+
+  <body>
+    <h1>Vue.js</h1>
+    <div id="app">
+      <p>データテーブルを表示する</p>
+      <table>
+        <div>
+          <tr>
+            <th>name</th>
+            <th>mail</th>
+            <th>tel</th>
+          </tr>
+          <tr v-for="(data,key) in datas">
+            <td>{{key}}</td>
+            <td>{{data.mail}}</td>
+            <td>{{data.tel}}</td>
+          </tr>
+        </div>
+      </table>
+    </div>
+    <hr />
+
+    <!-- <button onclick="doAction()">click</button> -->
+
+    <script>
+      var data = {
+        datas: {
+          Taro: { mail: "Taro.gmail", tel: "090-5432-9876" },
+          Hanako: { mail: "Hanako.gmail", tel: "090-2345-6789" },
+          Kento: { mail: "Kento.gmail", tel: "080-1234-9876" }
+        }
+      };
+
+      var app = new Vue({
+        el: "#app",
+        data: data
+      });
+
+      //   function doAction() {
+      //     data.flag = !data.flag;
+      //   }
+    </script>
+  </body>
+</html>

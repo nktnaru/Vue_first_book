@@ -1,0 +1,44 @@
+<!-- v-bind,v-if -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEST</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+
+  <body>
+    <style>
+      .ok {
+        color: blue;
+      }
+      .ng {
+        color: red;
+      }
+    </style>
+    <h1>Vue.js</h1>
+    <div id="app">
+      <p v-if="flag" class="ok">これは正常です！</p>
+      <p v-else class="ng">※現在問題が発生しております！！</p>
+    </div>
+    <hr />
+
+    <button onclick="doAction()">click</button>
+
+    <script>
+      var data = {
+        // message: "hello Vue!",
+        flag: true
+      };
+
+      var app = new Vue({
+        el: "#app",
+        data: data
+      });
+
+      function doAction() {
+        data.flag = !data.flag;
+      }
+    </script>
+  </body>
+</html>

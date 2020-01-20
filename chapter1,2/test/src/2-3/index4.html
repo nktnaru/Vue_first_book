@@ -1,0 +1,66 @@
+<!-- templateタグ で複雑は条件分岐-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEST</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+
+  <body>
+    <style>
+      .ok {
+        color: blue;
+      }
+      .ng {
+        color: red;
+      }
+    </style>
+
+    <h1>Vue.js</h1>
+    <div id="app">
+      <template v-if="flag">
+        <p>※データを表示する</p>
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>email</th>
+          </tr>
+          <tr>
+            <th>Taro</th>
+            <th>Taro.gmail</th>
+          </tr>
+          <tr>
+            <th>Hanako</th>
+            <th>Hanako.yahoo.com</th>
+          </tr>
+        </table>
+      </template>
+      <template v-else>
+        <p>※データリストを表示する</p>
+        <ul>
+          <li>TaroのアドレスはTaro．gmailです。</li>
+          <li>HanaknoのアドレスはHanak yahoo.coです</li>
+        </ul>
+      </template>
+    </div>
+    <hr />
+
+    <button onclick="doAction()">click</button>
+
+    <script>
+      var data = {
+        // message: "hello Vue!",
+        flag: true
+      };
+
+      var app = new Vue({
+        el: "#app",
+        data: data
+      });
+
+      function doAction() {
+        data.flag = !data.flag;
+      }
+    </script>
+  </body>
+</html>
