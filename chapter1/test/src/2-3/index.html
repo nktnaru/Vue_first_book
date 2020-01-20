@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEST</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+
+  <body>
+    <h1>Vue.js</h1>
+    <div id="app">
+      <ol v-html="message"></ol>
+    </div>
+    <hr />
+
+    <input type="text" onInput="doInput(event);" />
+    <button onclick="doAction();">click</button>
+
+    <script>
+      var data = {
+        message: "<li>hello Vue!</li>"
+      };
+
+      var app = new Vue({
+        el: "#app",
+        data: data
+      });
+
+      function doInput(event) {
+        data.message = event.target.value;
+      }
+
+      function doAction() {
+        data.message += "<li>" + data.message + "</li>";
+      }
+    </script>
+  </body>
+</html>
