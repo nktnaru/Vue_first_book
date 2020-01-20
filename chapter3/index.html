@@ -1,0 +1,42 @@
+<!-- コンポーネント埋め込み型 -->
+<!-- props -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter3</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      .hello {
+        font-size: 18px;
+        font-weight: bold;
+        border: 1px solid magenta;
+        padding: 5px 10px 0 10px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Vue.js</h1>
+    <div id="app">
+      <div><hello name="Taro" /></div>
+      <div><hello name="Hanako" /></div>
+    </div>
+
+    <script>
+      Vue.component("hello", {
+        props: { name: String },
+        template: '<p class="hello">{{name}}</p>'
+        // data: function() {
+        //   return {
+        //     message: "これは新着メッセージです！"
+        //   };
+        // }
+      });
+
+      var app = new Vue({
+        el: "#app"
+      });
+    </script>
+  </body>
+</html>
