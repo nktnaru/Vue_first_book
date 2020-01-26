@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>例題3</title>
+        <script src="https://unpkg.com/vue"></script>
+    </head>
+
+    <body>
+        <style>
+            body{
+                /* position: relative; */
+                width:100% ;
+                height: 500px;
+            }
+
+            h1{
+                position: absolute;
+                top:0px;
+                left:0px;
+                white-space: nowrap
+            }
+            #table1{
+                position: absolute;
+                top: 75px ;
+                left:10px;
+                display: inline-block;
+                width: 300px;
+                margin-right:0px;
+                /* border: 1px solid black; */
+            }
+            #table2{
+                position: absolute;
+                top: 75px ;
+                left:315px;
+                display: inline-block;
+                width: 300px;
+                margin:0px;
+                /* border: 1px solid black; */
+            }
+            tbody{
+                display: inline-block;
+                width: 300px;
+                margin-right:0px;
+            }
+
+            tr{
+                display: inline-block;
+                width: 300px;
+                
+            }
+
+            table tr th{
+                display: inline-block;
+                width: 300px;
+                /* margin-left: 0px;
+                margin-right: 5px; */
+                /* margin: 0px; */
+                font-size: 16pt;
+                color: white;
+                /* border: 1px solid gray; */
+                background-color: gray;
+                /* padding: 5px 15px; */
+            }
+            table tr td{
+                display: inline-block; 
+                width: 300px;
+                font-size: 16pt;
+                color: gray;
+                /* border: 0.5px solid black; */
+                /* padding: 5px 15px; */
+            }
+
+
+            button{
+                width: 300px;
+                background-color: gray;
+                border: 1px solid gray;
+                outline: 0;
+            }
+        </style>
+
+        
+        <h1>鬼滅の刃のキャラクター紹介(柱、上弦の鬼)</h1>
+
+        <div id="app">
+            <table id="table1">
+                <tr>
+                    <th><button onclick="doAction();">柱</button></th>   
+                </tr>
+                <template v-if="ha">
+                    <tr v-for="item in hasira">
+                        <td>{{item}}</td>
+                    </tr>
+                </template>
+
+            </table>
+        </div>
+        <div id="app_2">
+            <table id="table2">
+                <tr>
+                    <th><button onclick="doAction_2();">上限</button></th>
+                </tr>
+                <template v-if="zyo">
+                    <tr v-for="item_2 in zyougen">
+                        <td>{{item_2}}</td>
+                    </tr>
+                </template>
+            </table>
+        </div>
+
+        <script>
+            var data = {
+                hasira:['煉獄 杏寿郎','宇随 天元','甘露寺 蜜璃','悲鳴嶼 行冥','時透 無一郎','伊黒 小芭内','冨岡 義勇','胡蝶 しのぶ','不死川 実弥'],
+                zyougen:['堕姫/妓夫太郎','玉壺','半天狗','猗窩座','童磨','黒死牟'],
+                ha:false,
+                zyo:false
+            };
+
+            var app = new Vue({
+                el:'#app',
+                data:data
+            });
+            var app = new Vue({
+                el:'#app_2',
+                data:data
+            });
+
+            function doAction(){
+                data.ha = !data.ha
+            }
+
+            function doAction_2(){
+                data.zyo = !data.zyo
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>例題1</title>
+        <script src="https://unpkg.com/vue"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <p v-bind:style="styles">{{message}}</p>
+            <p v-bind:style="styles_2">{{message_2}}</p>
+        </div>
+
+        <script>
+        var data = {
+            message:'example1',
+            message_2:'example_2',
+            styles:{
+                fontSize: '20pt',
+                color:'red'
+            },
+            styles_2:{
+                fontSize: '30pt',
+                color:'blue'
+            }
+        };
+        
+        var app = new Vue({
+            el:'#app',
+            data:data
+        });
+
+        </script>
+    </body>
+</html>
