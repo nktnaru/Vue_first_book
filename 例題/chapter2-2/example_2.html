@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEST</title>
+    <script src="https://unpkg.com/vue"></script>
+    <meta http-equiv="content-type" charset="utf-8" />
+  </head>
+
+  <body>
+    <h1>Vue.js</h1>
+    <div id="app">
+      <p>{{count}}</p>
+      <div v-if="(count%3)==0　&& count != 0">
+        <p>3の倍数です</p>
+      </div>
+      <div v-else-if="(count%3)==1">
+        <p>3の倍数ではありません。余りが1です</p>
+      </div>
+      <div v-else-if="(count%3)==2">
+        <p>3の倍数ではありません。余りが2です</p>
+      </div>
+      <div v-else>
+        <p>3の倍数ではありません。余りが3です</p>
+      </div>
+    <hr />
+
+    <button onclick="doAction();">click</button>
+
+    <script>
+      var data = {
+        count: 0,
+        flag: true
+      };
+
+      var app = new Vue({
+        el: "#app",
+        data: data
+      });
+
+      function doAction() {
+        data.count = data.count + 1;
+        data.flag = !data.flag;
+      }
+    </script>
+  </body>
+</html>
