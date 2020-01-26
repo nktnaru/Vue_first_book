@@ -8,10 +8,17 @@
     <body>
         <style>
             body{
+                /* position: relative; */
                 width:100% ;
                 height: 500px;
             }
 
+            h1{
+                position: absolute;
+                top:0px;
+                left:0px;
+                white-space: nowrap
+            }
             #table1{
                 position: absolute;
                 top: 75px ;
@@ -72,9 +79,10 @@
             }
         </style>
 
+        
         <h1>鬼滅の刃のキャラクター紹介(柱、上弦の鬼)</h1>
 
-        <template id="app">
+        <div id="app">
             <table id="table1">
                 <tr>
                     <th><button onclick="doAction();">柱</button></th>   
@@ -86,8 +94,8 @@
                 </template>
 
             </table>
-        </template>
-        <template id="app_2">
+        </div>
+        <div id="app_2">
             <table id="table2">
                 <tr>
                     <th><button onclick="doAction_2();">上限</button></th>
@@ -98,7 +106,7 @@
                     </tr>
                 </template>
             </table>
-        </template>
+        </div>
 
         <script>
             var data = {
