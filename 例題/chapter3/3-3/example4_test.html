@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My first Vue app</title>
+        <script src="https://unpkg.com/vue"></script>
+    </head>
+
+    <body>
+        <h1>「税込み、割り勘」計算サイト</h1>
+        <div id="app">
+            <Calculation />
+            
+        </div>
+        <script>
+        var calc = Vue.component('Calculation',
+        {
+            // props:['num'],
+            data:function(){
+                return{num:0,tax_num:0,people_num:1,exam:0,flag_tax:false,flag_division:false};
+            },
+            computed:{
+                tax:function(event){
+                    tax_num = this.num * 1.10;
+                    console.log(tax_num)
+                    return Math.floor(tax_num);
+                },
+                //新規
+                exam_2:function(event){
+                    tax_num = this.num * 1.10;
+                    exam = tax_num / this.people_num;
+                    console.log(exam);
+                    return Math.ceil(exam);
+                },
+                // flag_2:function(event){
+                //     this.flag = !this.flag;
+                //     console.log(flag);
+                //     return flag;
+                // }
+            },
+            methods:{
+                doAction:function(event){
+                    this.flag_tax = !this.flag_tax;
+                    // return flag;
+                },
+                doAction_2:function(event){
+                    this.flag_division = !this.flag_division;
+                    // return flag;
+                }
+            },
+                
+            
+            //template:'<p>税込み:200円</p>'
+            template:'<div>\
+            <p>金額を入力してください</p>\
+            <div><input type="number" v-model="num"></div>\
+            <div><button v-on:click="doAction">税込み</button></div>\
+            <p v-if="flag_tax">税込み:{{tax}}円です</p>\
+            <p>人数を入力してください</p>\
+            <div><input type="number" v-model="people_num"></div>\
+            <div><button v-on:click="doAction_2">割り勘</button></div>\
+            <p v-if="flag_division">一人当たり:{{exam_2}}円です</p>\
+            </div>'
+        })
+
+
+        var app = new Vue({
+            el:'#app',
+            // data:{
+            
+            // }
+        })
+        </script>
+
+    </body>
+</html>
