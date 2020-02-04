@@ -3,20 +3,69 @@
     <head>
         <title>My first Vue app</title>
         <script src="https://unpkg.com/vue"></script>
+        <style>
+            .title{
+                margin-top: 10px;
+                margin-bottom: 10px;
+                font-size: 24px;
+            }
+            #app{
+                position: relative;
+            }
+            .type{
+                margin-top: 3px;
+                margin-bottom: 1px;
+            }
+
+            .coution_num{
+                position: absolute;
+                top: 15px;
+                left: 165px;
+                color: red;
+                font-size: 10pt; 
+            }
+            .coution_people{
+                position: absolute;
+                top: 67px;
+                left: 165px;
+                color: red;
+                font-size: 10pt; 
+            }
+
+           button{
+               display: inline-block;
+
+               width: 100px;
+               margin-top: 5px;
+               margin-left: 0px;
+               margin-right: 0px;
+           }
+
+           .text_tax{
+               position: absolute;
+               top:125px;
+               font-size: 20px;
+           }
+           .text_exam{
+               position: absolute;
+               top:160px;
+               font-size: 20px;
+           }
+        </style>
+
     </head>
 
     <body>
-        <h1>「税込み、割り勘」計算サイト</h1>
+        <h1 class="title">「税込み、割り勘」計算サイト</h1>
         <div id="app">
-            <Calculation />
-            
+            <Calculation />   
         </div>
         <script>
         var calc = Vue.component('Calculation',
         {
             // props:['num'],
             data:function(){
-                return{num:0,tax_num:0,people_num:1,exam:0,flag_tax:false,flag_division:false};
+                return{num:'',tax_num:0,people_num:1,exam:0,flag_tax:false,flag_division:false};
             },
             computed:{
                 tax:function(event){
@@ -51,14 +100,16 @@
             
             //template:'<p>税込み:200円</p>'
             template:'<div>\
-            <p>金額を入力してください</p>\
-            <div><input type="number" v-model="num"></div>\
-            <div><button v-on:click="doAction">税込み</button></div>\
-            <p v-if="flag_tax">税込み:{{tax}}円です</p>\
-            <p>人数を入力してください</p>\
-            <div><input type="number" v-model="people_num"></div>\
-            <div><button v-on:click="doAction_2">割り勘</button></div>\
-            <p v-if="flag_division">一人当たり:{{exam_2}}円です</p>\
+            <p class="type">金額を入力してください</p>\
+            <div><input type="number" min="1" v-model="num"></div>\
+            <p class="coution_num" v-if="num < 0">※0以上の値を入れてください</p>\
+            <p class="type">人数を入力してください</p>\
+            <div><input type="number" min="1" v-model="people_num"></div>\
+            <p class="coution_people" v-if="people_num <= 0">※1以上の値を入れてください</p>\
+            <button v-on:click="doAction">税込み</button>\
+            <button v-on:click="doAction_2">割り勘</button>\
+            <p v-if="flag_tax && num >= 0" class="text_tax">税込み:{{tax}}円です</p>\
+            <p v-if="flag_division && num >= 0 &&people_num > 0" class="text_exam">一人当たり:{{exam_2}}円です</p>\
             </div>'
         })
 
